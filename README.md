@@ -1,4 +1,4 @@
-# 💅 AI Booking Agent — Beauty Salon Telegram Assistant
+#  AI Booking Agent — Beauty Salon Telegram Assistant
 
 > An AI-powered Telegram booking assistant for beauty salons, built on **n8n**, **PostgreSQL**, and **Google Gemini**. It handles natural-language appointment requests, prevents double-booking, and automates reminders and feedback collection — with **zero manual scheduling**.
 
@@ -10,7 +10,7 @@
 
 ---
 
-## 📖 Overview
+##  Overview
 
 Small and mid-sized beauty salons typically lose time and clients to manual, phone-based booking: missed calls, double-bookings, forgotten reminders, and no-shows. **AI Booking Agent** solves this by giving clients a conversational Telegram bot that can:
 
@@ -24,22 +24,22 @@ The system is designed as a **multi-tenant-ready**, workflow-driven backend wher
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
-- 🗣️ **Natural language understanding** — clients type or say what they want in plain Russian/Ukrainian (or any language), no rigid menus required
-- 📅 **Smart scheduling** — resolves relative dates (*"завтра"*, *"в пятницу"*) deterministically in code, not guessed by the LLM
-- 🔒 **Double-booking protection** — every slot is validated against existing appointments, working hours, and master availability at the database level before it's confirmed
-- 🔁 **Session memory** — tracks each client's in-progress booking (selected service, date, time) across messages, with automatic session timeout/reset
-- 🔔 **Automated reminders** — background jobs send **24h** and **1h** pre-appointment Telegram reminders
-- ⭐ **Feedback collection** — automatically asks clients to rate their visit (1–5 ⭐) after the appointment ends
-- ❌ **Self-service cancel/reschedule** — clients can view, cancel, or reschedule their own upcoming appointments via inline buttons
-- 🧑‍💼 **Admin notifications** — the salon owner/admin is notified in real time about new bookings, cancellations, and workflow errors
-- 🤫 **Silent mode / off-topic gating** — after a booking is completed, the bot avoids spamming the client with irrelevant replies, escalating to full silence if off-topic messages continue
-- 🌐 **Multi-service, multi-master support** — services are mapped to the masters who can perform them, and the system picks (or respects) an available master automatically
+-  **Natural language understanding** — clients type or say what they want in plain Russian/Ukrainian (or any language), no rigid menus required
+-  **Smart scheduling** — resolves relative dates (*"завтра"*, *"в пятницу"*) deterministically in code, not guessed by the LLM
+-  **Double-booking protection** — every slot is validated against existing appointments, working hours, and master availability at the database level before it's confirmed
+-  **Session memory** — tracks each client's in-progress booking (selected service, date, time) across messages, with automatic session timeout/reset
+-  **Automated reminders** — background jobs send **24h** and **1h** pre-appointment Telegram reminders
+-  **Feedback collection** — automatically asks clients to rate their visit (1–5 ⭐) after the appointment ends
+-  **Self-service cancel/reschedule** — clients can view, cancel, or reschedule their own upcoming appointments via inline buttons
+-  **Admin notifications** — the salon owner/admin is notified in real time about new bookings, cancellations, and workflow errors
+-  **Silent mode / off-topic gating** — after a booking is completed, the bot avoids spamming the client with irrelevant replies, escalating to full silence if off-topic messages continue
+-  **Multi-service, multi-master support** — services are mapped to the masters who can perform them, and the system picks (or respects) an available master automatically
 
 ---
 
-## 🏗️ Architecture & Tech Stack
+##  Architecture & Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -74,7 +74,7 @@ booking_sessions     → in-progress booking state per chat (service, date/time 
 
 ---
 
-## 🔄 Workflow & Business Logic
+##  Workflow & Business Logic
 
 A core design principle of this project: **the LLM decides *what* the client wants, but code decides *whether* it's actually possible.**
 
@@ -136,9 +136,9 @@ GOOGLE_GEMINI_API_KEY=your_gemini_key
 SALOON_WEBHOOK_SECRET=your_shared_secret
 ```
 
-### 🔐 Security notes
+###  Security notes
 
-- ⚠️ **No API keys, tokens, or credentials are included in this repository.** Exported n8n JSON files reference credentials by **ID only** — you must re-connect them to your own n8n Credentials store after import.
+-  **No API keys, tokens, or credentials are included in this repository.** Exported n8n JSON files reference credentials by **ID only** — you must re-connect them to your own n8n Credentials store after import.
 - The internal `DB_Helper_Saloon` webhook is protected by a shared-secret header (`x-webhook-secret`), rejecting any request that doesn't match `SALOON_WEBHOOK_SECRET`.
 - Business/tenant identifiers (`business_id`) are UUIDs, not sequential IDs, to avoid casual enumeration.
 - Before publishing your own fork, double-check every workflow's `credentials` blocks and any hard-coded chat IDs / tokens and replace them with your own or with environment references.
@@ -150,10 +150,10 @@ SALOON_WEBHOOK_SECRET=your_shared_secret
 3. Set up Telegram and PostgreSQL credentials in n8n.
 4. Configure the environment variables above.
 5. Activate all four workflows.
-6. Message your bot on Telegram with `/start` 🎉
+6. Message your bot on Telegram with `/start` 
 
 ---
 
-## 📄 License
+##  License
 
 Add your preferred license here (e.g. MIT).
